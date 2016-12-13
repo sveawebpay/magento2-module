@@ -1,0 +1,56 @@
+.payment-method {
+  .svea-paymentplan {
+
+    .campaigns {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 2rem;
+
+      font-size: 1.2rem;
+
+      @media screen and (min-width: 960px) {
+        flex-direction: row;
+      }
+
+      .list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex: 1 1;
+
+        padding: 3rem;
+        @media screen and (min-width: 960px) {
+          padding: 3rem 3rem 3rem 0;
+        }
+
+        .campaign {
+          display: flex;
+          flex: 0 0 100%;
+          @media screen and (min-width: 600px) {
+            flex: 0 0 50%;
+          }
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          padding: .3rem;
+
+          .campaign-select {
+            display: flex;
+            flex: 0 0 2rem;
+          }
+
+          .campaign-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1;
+
+            .description {
+              font-weight: bold;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

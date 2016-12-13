@@ -1,0 +1,21 @@
+<?php
+    $orderData = $block->getOrderData();
+?>
+
+<section>
+    <div class="svea-order-info">
+
+        <?php foreach ($orderData as $data) : ?>
+            <?php
+
+            $label = $data['label'];
+            $value = $data['value'];
+            ?>
+            <div class="row">
+                <div class="label"><?= $block->escapeHtml($label) ?></div>
+                <div><?= $block->escapeHtml($value) ?></div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+</section>

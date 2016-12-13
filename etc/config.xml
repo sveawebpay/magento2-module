@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd"
+>
+    <default>
+        <payment>
+            <svea_paymentplan>
+                <active>0</active>
+                <model>SveaPaymentplanFacade</model>
+                <order_status>pending</order_status>
+                <title>Svea Plan Payment</title>
+                <allowspecific>0</allowspecific>
+                <group>svea</group>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_capture_partial>0</can_capture_partial>
+                <can_refund>1</can_refund>
+                <can_cancel>1</can_cancel>
+                <can_void>1</can_void>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>0</can_use_internal>
+                <disable_on_virtual>1</disable_on_virtual>
+            </svea_paymentplan>
+
+            <svea_invoice>
+                <active>0</active>
+                <model>SveaInvoiceFacade</model>
+                <order_status>pending</order_status>
+                <title>Svea Invoice</title>
+                <allowspecific>0</allowspecific>
+                <group>svea</group>
+                <is_gateway>1</is_gateway>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_capture_partial>1</can_capture_partial>
+                <can_refund>1</can_refund>
+                <can_refund_partial_per_invoice>0</can_refund_partial_per_invoice>
+                <can_cancel>1</can_cancel>
+                <can_void>1</can_void>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>0</can_use_internal>
+                <disable_on_virtual>1</disable_on_virtual>
+                <distribution_type>Email</distribution_type>
+            </svea_invoice>
+
+            <svea_card>
+                <active>0</active>
+                <model>SveaCardFacade</model>
+                <order_status>pending</order_status>
+                <title>Svea Card Payment</title>
+                <allowspecific>0</allowspecific>
+                <group>svea</group>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_capture_partial>0</can_capture_partial>
+                <can_refund>1</can_refund>
+                <can_cancel>1</can_cancel>
+                <can_void>1</can_void>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>0</can_use_internal>
+            </svea_card>
+
+            <svea_direct_bank>
+                <active>0</active>
+                <model>SveaBankFacade</model>
+                <order_status>pending</order_status>
+                <title>Svea Bank</title>
+                <allowspecific>0</allowspecific>
+                <group>svea</group>
+                <can_authorize>1</can_authorize>
+                <can_capture>0</can_capture>
+                <can_capture_partial>0</can_capture_partial>
+                <can_cancel>0</can_cancel>
+                <can_void>0</can_void>
+                <can_refund>1</can_refund>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>0</can_use_internal>
+            </svea_direct_bank>
+
+        </payment>
+        <svea_webpay>
+            <svea_address>
+                <FI>
+                    <private>
+                        <replace_address>0</replace_address>
+                    </private>
+                    <company>
+                        <replace_address>0</replace_address>
+                    </company>
+                </FI>
+                <NO>
+                    <private>
+                        <replace_address>0</replace_address>
+                    </private>
+                    <company>
+                        <replace_address>1</replace_address>
+                    </company>
+                </NO>
+                <SE>
+                    <private>
+                        <replace_address>1</replace_address>
+                    </private>
+                    <company>
+                        <replace_address>1</replace_address>
+                    </company>
+                </SE>
+                <DK>
+                    <private>
+                        <replace_address>1</replace_address>
+                    </private>
+                    <company>
+                        <replace_address>1</replace_address>
+                    </company>
+                </DK>
+            </svea_address>
+        </svea_webpay>
+    </default>
+
+</config>

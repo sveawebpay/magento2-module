@@ -1,0 +1,41 @@
+<!-- ko if: isDisplayed() -->
+    <!-- ko if: isIncludingDisplayed() -->
+
+    <tr class="totals fee incl">
+        <th class="mark" scope="row">
+            <span class="label" data-bind="i18n: getTitle()"></span>
+        </th>
+        <td class="amount">
+            <span class="price" data-bind="text: getIncludingValue(), attr: {'data-th': getTitle()}"></span>
+        </td>
+    </tr>
+    <!-- /ko -->
+    <!-- ko if: isExcludingDisplayed() -->
+    <tr class="totals fee excl">
+        <th class="mark" scope="row">
+            <span class="label" data-bind="i18n: getTitle()"></span>
+        </th>
+        <td class="amount">
+            <span class="price" data-bind="text: getValue(), attr: {'data-th': getTitle()}"></span>
+        </td>
+    </tr>
+    <!-- /ko -->
+    <!-- ko if: displayBothPrices() -->
+    <tr class="totals fee incl">
+        <th class="mark" scope="row">
+            <span class="label" data-bind="i18n: getTitle()"></span> <span data-bind="i18n: 'Incl. Tax'"></span>
+        </th>
+        <td class="amount">
+            <span class="price" data-bind="text: getIncludingValue(), attr: {'data-th': getTitle()}"></span>
+        </td>
+    </tr>
+    <tr class="totals fee excl">
+        <th class="mark" scope="row">
+            <span class="label" data-bind="i18n: getTitle()"></span> <span data-bind="i18n: 'Excl. Tax'"></span>
+        </th>
+        <td class="amount">
+            <span class="price" data-bind="text: getValue(), attr: {'data-th': getTitle()}"></span>
+        </td>
+    </tr>
+    <!-- /ko -->
+<!-- /ko -->

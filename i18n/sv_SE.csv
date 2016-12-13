@@ -1,0 +1,138 @@
+"lang_code","sv"
+"invoice_info","Svea faktura"
+"paymentplan_info","Svea delbetalning"
+"redirect","Vidarebefodrar..."
+"from_about","Från"
+"authorize_success %1","Lyckad betalning, Svea Order id: %1"
+"unit","st"
+"customer_type","Typ"
+"private","Privatperson"
+"company","Företag"
+"text_ssn","Personnummer"
+"text_birthyear","Födelseår"
+"text_birthmonth","Födelsemånad"
+"text_birthday","Födelsedag"
+"text_vat_no","Organisationsnummer"
+"text_initials","Initialer"
+"invoice_address","Fakturaadress"
+"discount","Rabatt"
+"get_address","Hämta adress"
+"invoice_fee","Svea fakturaavgift"
+"delivered","Order är levererad"
+"month","månad"
+"initial_fee","Uppläggningsavgift"
+"Your monthly cost","Din månadskostnad"
+
+"no_orderid","Ingen order hittas hos Svea. Det krävs ett Svea orderid."
+"Your monthly cost","Din månadskostnad"
+
+"Error_20000","Svea error %1 : Ordern är stängd"
+"Error_20001","Svea error %1 : Ordern nekades"
+"Error_20002","Svea error %1 : Något gick fel med ordern"
+"Error_20003","Svea error %1 : Ordern har gått ut"
+"Error_20004","Svea error %1 : Ordern existerar ej"
+"Error_20005","Svea error %1 : Ordertypen matchar ej"
+"Error_20006","Svea error %1 : Summan av orderraderna kan ej vara negativ eller noll"
+"Error_20013","Svea error %1 : Ordern väntar"
+
+"Error_27000","Svea error %1 : Delbetalningssumman matchar ej någon kampanj som är knuten till kontot"
+"Error_27001","Svea error %1 : Det går ej att leverera order för en pdf saknas. Kontakta SveaWebPay’s support"
+"Error_27002","Svea error %1 : Det går ej att delleverera en delbetalning"
+"Error_27003","Svea error %1 : Det går ej att kombinera Kampanjkod med en fast summa"
+"Error_27004","Svea error %1 : Det går ej att hitta en passande kampanjkod för den angivna summan"
+
+"Error_24000","Svea error %1 : Fakturabeloppet överstiger tillåtet orderbelopp."
+
+"Error_30000","Svea error %1 : Kreditupplysningen avslogs."
+"Error_30001","Svea error %1 : The customer is blocked or has shown strange or unusual behavior."
+"Error_30002","Svea error %1 : Baserat på kreditupplysningen nekades ordern."
+"Error_30003","Svea error %1 : Det går ej att hitta kunden i kreditupplysningen."
+
+"Error_40000","Svea error %1 : Ingen kund kunde hittas"
+"Error_40001","Svea error %1 : Landskoden stöds ej"
+"Error_40002","Svea error %1 : Ogiltiga kunduppgifter"
+"Error_40004","Svea error %1 : Det gick ej att hitta några adresser för den här kunden."
+
+"Error_50000","Svea error %1 : Kunden är ej godkänd för denna metod."
+"Error_error","Svea error %1 "
+
+"Error_100","Svea error %1 : Internfel";
+"Error_105","Svea error %1 : Felaktig transaktionsstatus";
+"Error_106","Svea error %1 : Fel hos tredjepart";
+"Error_107","Svea error %1 : Transaktion nekad hos bank";
+"Error_108","Svea error %1 : Transaktion avbruten";
+"Error_109","Svea error %1 : Transaktion inte hittad hos bank";
+"Error_114","Svea error %1 : Timeout hos bank";
+"Error_121","Svea error %1 : Kortet har utgått";
+"Error_122","Svea error %1 : Kort stulet";
+"Error_123","Svea error %1 : Borttappat kort":;
+"Error_127","Svea error %1 : Kundrefernsnummer redan använt i en annan transaktion";
+"Error_129","Svea error %1 : Mer än en transaktion hittad för angivet kundreferensnummer";
+
+"No customer found","Det går ej att hitta kunden"
+"The Invoice will be sent to the address registered to your social security number","Fakturan skickas till folkbokföringsadressen"
+
+
+"Initial fee","Uppläggninsavgift"
+"Interest rate","Ränta"
+"Payment free months","Betalningsfria månader"
+"months", "mån"
+"Contract length", "Kontraktslängd"
+"Notification fee", "Fakturaavgift"
+"Get Address", "Hämta address"
+
+"No order rows to send. Order is out of sync with svea.","No order rows to send. Order is out of sync with svea."
+"Svea sum and magento sum do not match","Svea sum and magento sum do not match"
+"No campaign provided.","No campaign provided."
+"Totals do not match","Totals do not match"
+"--Please Select--","--Please Select--"
+Order,Order
+Authorize,Authorize
+svea,svea
+"Update Campaigns","Update Campaigns"
+"Place Order","Place Order"
+"Ssn","ID-nummer"
+Private,Private
+"Get Address","Get Address"
+"Please fill in Ssn and click 'Get Address'.","Please fill in Ssn and click 'Get Address'."
+"Your items will be shipped to this address.","Your items will be shipped to this address."
+"Ssn","ID-Nummer"
+"An error occured","An error occured"
+"Svea Hosted Api Settings","Svea Hosted Api Settings"
+"Merchant Id","Merchant Id"
+Secret,Secret
+"Test Mode","Test Mode"
+"Svea Invoice","Svea Invoice"
+Enabled,Enabled
+"Payment Action","Payment Action"
+"New Order Status","New Order Status"
+"Sort Order","Sort Order"
+Title,Title
+"Payment from Applicable Countries","Payment from Applicable Countries"
+"Payment from Specific Countries","Payment from Specific Countries"
+"Minimum Order Total","Minimum Order Total"
+"Maximum Order Total","Maximum Order Total"
+"Username Sweden","Username Sweden"
+"Password Sweden","Password Sweden"
+"Client Number Sweden","Client Number Sweden"
+"Username Finland","Username Finland"
+"Password Finland","Password Finland"
+"Client Number Finland","Client Number Finland"
+"Username Norway","Username Norway"
+"Password Norway","Password Norway"
+"Client Number Norway","Client Number Norway"
+"Username Denmark","Username Denmark"
+"Password Denmark","Password Denmark"
+"Client Number Denmark","Client Number Denmark"
+"Username Germany","Username Germany"
+"Password Germany","Password Germany"
+"Client Number Germany","Client Number Germany"
+"Username Netherlands","Username Netherlands"
+"Password Netherlands","Password Netherlands"
+"Client Number Netherlands","Client Number Netherlands"
+"Svea Paymentplan","Svea Paymentplan"
+"Client country","Client country"
+"Svea Card Payment","Svea Card Payment"
+"Capture card order on confirmation","Capture card order on confirmation"
+Icons,Icons
+"Svea Direct Bank","Svea Direct Bank"

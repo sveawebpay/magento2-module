@@ -1,0 +1,71 @@
+"lang_code","fi"
+"invoice_info","Svea Lasku"
+"paymentplan_info","Svea Osamaksu"
+"redirect","Uudelleen ohjaus käynnissä..."
+"from_about","Alkaen"
+"authorize_success %1","Tilaus luotu, Svean tilausnro: %1"
+"unit","yksikkö"
+"customer_type","Tyyppi"
+"private","Yksityinen"
+"company","Yritys"
+"text_ssn","Henkilötunnus"
+"text_birthyear","Syntymävuosi"
+"text_birthmonth","Syntymäkuukausi"
+"text_birthday","Syntymäpäivä"
+"text_vat_no","ALV numero"
+"text_initials","Nimikirjaimet"
+"invoice_address","Laskutusosoite"
+"get_address","Hae osoite"
+"invoice_fee","Svean laskutuslisä"
+"delivered","Tilaus toimitettu"
+"month","kuukausi"
+"initial_fee","Lisätään perustamiskulu"
+"Your monthly cost","Kuukausikulusi"
+
+"no_orderid","Svealta ei löydy tilausta. Svean tilaustunniste vaaditaan"
+
+"Error_20000","Svea error %1 : Tilaus suljettu"
+"Error_20001","Svea error %1 : Tilaus hylätty"
+"Error_20002","Svea error %1 : Virhe tilauksessa"
+"Error_20003","Svea error %1 : Tilaus vanhentunut"
+"Error_20004","Svea error %1 : Tilausta ei löydy"
+"Error_20005","Svea error %1 : Tilaustyyppi virheellinen"
+"Error_20006","Svea error %1 : Summan av orderraderna kan ej vara negativ eller noll"
+"Error_20013","Svea error %1 : Ordern väntar"
+
+"Error_27000","Svea error %1 : Delbetalningssumman matchar ej någon kampanj som är knuten till kontot"
+"Error_27001","Svea error %1 : Det går ej att leverera order för en pdf saknas. Kontakta SveaWebPay’s support"
+"Error_27002","Svea error %1 : Det går ej att delleverera en delbetalning"
+"Error_27003","Svea error %1 : Det går ej att kombinera Kampanjkod med en fast summa"
+"Error_27004","Svea error %1 : Det går ej att hitta en passande kampanjkod för den angivna summan"
+
+"Error_24000","Svea error %1 : Laskun summa ylittää valtuutetun summan"
+
+"Error_30000","Svea error %1 : Luotto hylätty"
+"Error_30001","Svea error %1 : Asiakas on estetty tai on esittänyt outoa tai epätavallista käyttäytymistä"
+"Error_30002","Svea error %1 : Luottotietojen tarkistukseen perustuen, pyyntö hylättiin"
+"Error_30003","Svea error %1 : Asiakasta ei löydy luottorekisteristä"
+
+"Error_40000","Svea error %1 : Asiakasta ei löydy"
+"Error_40001","Svea error %1 : Maatunnusta ei tueta"
+"Error_40002","Svea error %1 : Väärä asiakastieto"
+"Error_40004","Svea error %1 : Tälle asiakkaalle ei löydy osoitetta"
+
+"Error_50000","Svea error %1 : Asiakkaalla ei ole valtuuksia tälle menetelmälle"
+"Error_error","Svea error %1 "
+
+"Error_100","Svea error %1 : Maksu epäonnistui. Ottakaa yhteyttä integroinnin suorittaneeseen henkilöön";
+"Error_105","Svea error %1 : Virheellinen tapahtumatila";
+"Error_106","Svea error %1 : Kolmannen osapuolen virhe";
+"Error_107","Svea error %1 : Pankki hylännyt tapahtuman";
+"Error_108","Svea error %1 : Tapahtuma keskeytetty";
+"Error_109","Svea error %1 : Pankki ei löydä tapahtumaa";
+"Error_114","Svea error %1 : Pankin aikakatkaisu";
+"Error_121","Svea error %1 : Kortti vanhentunut";
+"Error_122","Svea error %1 : Kortti varastettu";
+"Error_123","Svea error %1 : Kortti hukattu";
+"Error_127","Svea error %1 : Asiakkaan viitenumero jo käytetty toisessa tapahtumassa";
+"Error_129","Svea error %1 : Enemmän kuin yksi tapahtuma löydetty annetulle asiakasviitenumerolle";
+
+"No customer found","Asiakasta ei löydy"
+"The Invoice will be sent to the address registered to your social security number","Lasku tullaan lähettämään väestökirjanpito osoitteeseen"

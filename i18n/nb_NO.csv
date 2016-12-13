@@ -1,0 +1,71 @@
+"lang_code","nb"
+"invoice_info","Svea Faktura"
+"paymentplan_info","Svea Delbetaling"
+"redirect","Omdirigere..."
+"from_about","Fra"
+"authorize_success %1","Ordren er opprettet, Svea Order id: %1"
+"unit","st"
+"customer_type","Type"
+"private","Privat"
+"company","Foretak"
+"text_ssn","Fødselsnummer"
+"text_birthyear","Fødselsår"
+"text_birthmonth","Fødselsmåned"
+"text_birthday","Fødselsdag"
+"text_vat_no","Organisasjonsnummer"
+"text_initials","Initialer"
+"invoice_address","Faktura adresse"
+"get_address","Hente address"
+"invoice_fee","Svea Faktureringsavgift"
+"delivered","Order is delivered"
+"month","måned"
+"initial_fee","Innledende avgift vil bli lagt til"
+"Your monthly cost","Din månedlige kostnad"
+
+"no_orderid","No order is placed at Svea. Svea order id is required"
+
+"Error_20000","Svea error %1 : Ordren er stengt"
+"Error_20001","Svea error %1 : Ordren nektes"
+"Error_20002","Svea error %1 : Noe er galt med ordren"
+"Error_20003","Svea error %1 : Ordren er utgått"
+"Error_20004","Svea error %1 : Ordren finnes ikke"
+"Error_20005","Svea error %1 : Ordre type passer ikke sammen"
+"Error_20006","Svea error %1 : Summen av alle ordrelinjer kan ikke være null eller negativt"
+"Error_20013","Svea error %1 : Ordren er på vent"
+
+"Error_27000","Svea error %1 : Den medfølgende kampanjekode beløpets kombinasjon samsvarer ikke med noen kampanje kode knyttet til denne klienten"
+"Error_27001","Svea error %1 : Kan ikke levere ordren siden den angitte pdf malen mangler, Kontakt Svea WebPay for mer informasjon"
+"Error_27002","Svea error %1 : Kan ikke delvis levere en betalingsplan"
+"Error_27003","Svea error %1 : Kan ikke blande en kampanjekode med ett fast månedlig beløp"
+"Error_27004","Svea error %1 : Kan ikke finne en passende kampanjekode for det månedlige beløpet"
+
+"Error_24000","Svea error %1 : Fakturabeløpet overstiger det autoriserte beløpet"
+
+"Error_30000","Svea error %1 : Kreditt rapporten ble avvist"
+"Error_30001","Svea error %1 : Kunden er blokkert eller har utvist uvanlig oppførsel
+"Error_30002","Svea error %1 : Basert på den utførte kreditsjekk ble forespørselen avvist"
+"Error_30003","Svea error %1 : Kunden finnes ikke i kredittsjekk"
+
+"Error_40000","Svea error %1 : Ingen kunde funnet"
+"Error_40001","Svea error %1 : Det gitte postnummer støttes ikke"
+"Error_40002","Svea error %1 : Ugyldig kundeinformasjon"
+"Error_40004","Svea error %1 : Finner ingen adresse på denne kunden"
+
+"Error_50000","Svea error %1 : Klienten har ingen tillatelse for denne metoden"
+"Error_error","Svea error %1 "
+
+"Error_100","Svea error %1 : Internfeil";
+"Error_105","Svea error %1 : Feilaktig transaktionsstatus";
+"Error_106","Svea error %1 : Feil hos tredjepart";
+"Error_107","Svea error %1 : Transaktion nektet hos bank";
+"Error_108","Svea error %1 : Transaktion avbrutt";
+"Error_109","Svea error %1 : Transaktion ikke funnet hos bank";
+"Error_114","Svea error %1 : Timeout hos bank";
+"Error_121","Svea error %1 : Kortet er utgått";
+"Error_122","Svea error %1 : Kort stjålet";
+"Error_123","Svea error %1 : Mistet kort";
+"Error_127","Svea error %1 : Kundefeferansenummer er allerede benyttet i en annan transaktion";
+"Error_129","Svea error %1 : Mer enn en transaktion er funnet for angitt kundereferansenummer";
+
+"No customer found","Ingen kunde funnet"
+"The Invoice will be sent to the address registered to your social security number","Fakturaen sendes til folkeregistrertadresse"

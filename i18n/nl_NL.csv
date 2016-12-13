@@ -1,0 +1,71 @@
+"lang_code","nl"
+"invoice_info","Svea Factuur"
+"paymentplan_info","Svea Deelbetalen"
+"redirect","Redirecting..."
+"from_about","Van"
+"authorize_success %1","Order is created, Svea Order id: %1"
+"unit","st"
+"customer_type","Type"
+"private","Privé"
+"company","Bedrijf"
+"text_ssn","Sofi-nummer"
+"text_birthyear","geboorte jaar"
+"text_birthmonth","geboorte maand"
+"text_birthday","geboorte dag"
+"text_vat_no","BTW nr"
+"text_initials","Initialen"
+"invoice_address","Factuuradres"
+"get_address","Adresgegevens ophalen"
+"invoice_fee","Svea Factuurkosten"
+"delivered","Order is delivered"
+"month","maand"
+"initial_fee","De initiële kosten zullen worden toegevoegd"
+"Your monthly cost","Uw maandelijkse kosten"
+
+"no_orderid","No order is placed at Svea. Svea order id is required"
+
+"Error_20000","Svea error %1 : De order is gesloten"
+"Error_20001","Svea error %1 : De order is afgewezen"
+"Error_20002","Svea error %1 : De order heeft een fout veroorzaakt"
+"Error_20003","Svea error %1 : De order is verlopen"
+"Error_20004","Svea error %1 : De order bestaat niet"
+"Error_20005","Svea error %1 : Het ordertype komt niet overeen"
+"Error_20006","Svea error %1 : De som van alle orderrijen kan geen nul of negatief zijn"
+"Error_20013","Svea error %1 : De order is in afwachting"
+
+"Error_27000","Svea error %1 : De verstrekte actiecode-bedrag combinatie komt niet overeen met de actiecodes die aan deze klant verbonden zijn"
+"Error_27001","Svea error %1 : Er kan geen factuur gecreëerd worden, aangezien de gespecificeerde pdf-sjabloon ontbreekt. Neem contact op met SveaWebPay´s support"
+"Error_27002","Svea error %1 : De factuur kan niet opgesplitst worden voor deelbetaling"
+"Error_27003","Svea error %1 : Er kan geen campagnecode samengevoegd worden met een vast maandelijks bedrag"
+"Error_27004","Svea error %1 : Kan geen geschikte campagnecode vinden voor het maandelijkse bedrag"
+
+"Error_24000","Svea error %1 : Het factuurbedrag is hoger dan de toegestane limiet"
+
+"Error_30000","Svea error %1 : Het kredietrapport is afgewezen"
+"Error_30001","Svea error %1 : De klant is geblokkeerd of heeft vreemd/ ongewoon gedrag vertoond
+"Error_30002","Svea error %1 : Op basis van de uitgevoerde kredietcontrole, is het verzoek afgewezen"
+"Error_30003","Svea error %1 : De klant kan niet gevonden worden door de kredietcontrole"
+
+"Error_40000","Svea error %1 : Geen klant gevonden"
+"Error_40001","Svea error %1 : De verstrekte landencode wordt niet ondersteund"
+"Error_40002","Svea error %1 : Ongeldige klantinformatie"
+"Error_40004","Svea error %1 : Er kan geen adres gevonden worden voor deze klant"
+
+"Error_50000","Svea error %1 : De klant is niet bevoegd voor deze methode"
+"Error_error","Svea error %1 "
+
+"Error_100","Svea error %1 : Ongeldig. Neem contact op met de integrator";
+"Error_105","Svea error %1 : Ongeldige transactiestatus";
+"Error_106","Svea error %1 : Fout bij derde partij";
+"Error_107","Svea error %1 : Transactie afgewezen door de bank";
+"Error_108","Svea error %1 : Transactie geannulleerd";
+"Error_109","Svea error %1 : Transactie niet gevonden bij de bank";
+"Error_114","Svea error %1 : Timeout bij de bank";
+"Error_121","Svea error %1 : De geldigheidsdatum van de pas is verlopen";
+"Error_122","Svea error %1 : Gestolen pas";
+"Error_123","Svea error %1 : Verloren pas";
+"Error_127","Svea error %1 : Klant referentienummer al gebruikt in een andere transactie";
+"Error_129","Svea error %1 : Meer dan één transactie gevonden voor het opgegeven klant referentienummer";
+
+"No customer found","Geen klant gevonden"
+"The Invoice will be sent to the address registered to your social security number","De factuur wordt naar het adres volgens het bevolkingsregister gezonden"

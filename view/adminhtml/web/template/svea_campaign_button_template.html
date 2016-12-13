@@ -1,0 +1,23 @@
+<div>
+    <input type="hidden" data-bind="attr: { name: configName(), value: ko.toJSON(campaigns()) }" >
+
+    <div data-bind="i18n: message"></div>
+
+    <ul class="svea-campaign-list">
+        <!-- ko foreach: campaigns().campaignCodes -->
+            <li class="svea-campaign">
+                <div data-bind="text: description"></div>
+            </li>
+        <!--/ko-->
+    </ul>
+
+    <button class="action"
+            data-bind="
+                click: updateCampaigns,
+                attr: {title: $t('Update Campaigns')},
+                css: {disabled: isUpdating()},
+                "
+    >
+        <span data-bind="i18n: 'Update Campaigns'"></span>
+    </button>
+</div>

@@ -1,0 +1,70 @@
+"lang_code","da"
+"invoice_info","Svea Faktura"
+"paymentplan_info","Svea Delbetal"
+"redirect","Omdirigering..."
+"from_about","Fra"
+"authorize_success %1","Ordre er oprettet, Svea Order id: %1"
+"unit","st"
+"customer_type","Type"
+"private","Privat"
+"company","Erhverv"
+"text_ssn","Cpr.nr."
+"text_birthyear","Fødselsår"
+"text_birthmonth","Fødselsmåned"
+"text_birthday","Fødselsdag"
+"text_vat_no","CVR-nummer"
+"text_initials","Initialer"
+"invoice_address","Betalingsadresse"
+"get_address","Hente adresse"
+"invoice_fee","Svea Fakturering Gebyr"
+"delivered","Ordre bliver leveret"
+"month","måned"
+"initial_fee","Indledende gebyr vil blive tilføjet"
+"no_orderid","No order is placed at Svea. Svea order id is required"
+"Your monthly cost","Din månedlige omkostning"
+
+"Error_20000","Svea error %1 : Ordre lukket"
+"Error_20001","Svea error %1 : Ordre nægtet"
+"Error_20002","Svea error %1 : Fejl ved ordre"
+"Error_20003","Svea error %1 : Ordre udløbet"
+"Error_20004","Svea error %1 : Ordre eksisterer ikke"
+"Error_20005","Svea error %1 : Ordretype mismatch"
+"Error_20006","Svea error %1 : Summen af alle ordrerækker kan ikke være nul eller negativ"
+"Error_20013","Svea error %1 : Ordre afventer"
+
+"Error_27000","Svea error %1 : Kombinationen af det angivne kampagnekode-beløb matcher ikke nogen kampagnekode knyttet til denne kunde"
+"Error_27001","Svea error %1 : Kan ikke levere ordre, da den udspecificerede pdf-skabelon mangler. Kontakt SveaWebPays supportafdeling"
+"Error_27002","Svea error %1 : Kan ikke levere Betalingsplan delvist"
+"Error_27003","Svea error %1 : Kampagnekode kan ikke benyttes sammen med fast Månedlig Betaling."
+"Error_27004","Svea error %1 : Kan ikke finde en egnet Kampagnekode for den Månedlige Betaling"
+
+"Error_24000","Svea error %1 : Beløbsstørrelse overstiger det tilladte"
+
+"Error_30000","Svea error %1 : Kreditrapporten blev afvist"
+"Error_30001","Svea error %1 : Kunden er spærret eller har udvist mærkelig eller usædvanlig adfærd
+"Error_30002","Svea error %1 : På basis af det gennemførte kredittjek blev forespørgslen afvist"
+"Error_30003","Svea error %1 : Kunden kan ikke findes af kredittjek"
+
+"Error_40000","Svea error %1 : Ingen kunde fundet"
+"Error_40001","Svea error %1 : Den angivne Landekode understøttes ikke"
+"Error_40002","Svea error %1 : Ugyldig kundeinformation"
+"Error_40004","Svea error %1 : Kunne ikke finde adresse på pågældende kunde"
+
+"Error_50000","Svea error %1 : Kunden er ikke godkendt til denne handling"
+"Error_error","Svea error %1 "
+
+"Error_102","Svea error %1 : Fejl. Kontakt integrator';
+"Error_105","Svea error %1 : Fejlagtigt trasnaktionsstatus';
+"Error_106","Svea error %1 : Fejl hos tredjepart';
+"Error_107","Svea error %1 : Transaktion afvist af bank';
+"Error_108","Svea error %1 : Transaktionen afbrudt';
+"Error_109","Svea error %1 : Transaktionen ikke fundet hos bank';
+"Error_114","Svea error %1 : Timeout hos bank';
+"Error_121","Svea error %1 : Kortet er udgået';
+"Error_122","Svea error %1 : Kortet er stjålet';
+"Error_123","Svea error %1 : Tabt kort';
+"Error_127","Svea error %1 : Kundenummer allerede anvendt i en anden transaktion';
+"Error_129","Svea error %1 : Mere end én transaktion fundet for angivet kundenummer';
+
+"No customer found","Ingen kunde fundet"
+"The Invoice will be sent to the address registered to your social security number","Fakturaen sendes til folkeregisteradressen"

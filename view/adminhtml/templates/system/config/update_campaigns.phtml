@@ -1,0 +1,23 @@
+<div id="svea-update-campaigns" data-bind="scope: 'svea-update-campaigns'">
+    <?php
+        $config = $block->getComponentConfig();
+    ?>
+
+    <!-- ko template: getTemplate() --><!-- /ko -->
+
+    <script type="text/x-magento-init">
+    {
+        "#svea-update-campaigns": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "svea-update-campaigns": {
+                        "component": "Webbhuset_SveaWebpay/js/svea_campaign_button",
+                        "config": <?= /* @noEscape */ json_encode($config) ?>
+                    }
+                }
+            }
+        }
+    }
+    </script>
+
+</div>

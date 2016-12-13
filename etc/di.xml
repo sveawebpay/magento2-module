@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd"
+>
+    <!-- Invoice  -->
+    <virtualType name="SveaInvoiceFacade" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">Webbhuset\SveaWebpay\Model\Ui\ConfigProvider::INVOICE_CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Webbhuset\SveaWebpay\Block\Info\SveaInfo</argument>
+            <argument name="valueHandlerPool" xsi:type="object">SveaInvoiceValueHandlerPool</argument>
+            <argument name="validatorPool" xsi:type="object">SveaValidatorPool</argument>
+            <argument name="commandPool" xsi:type="object">SveaInvoiceCommandPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="country" xsi:type="string">SveaInvoiceCountryValidator</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SveaInvoiceCountryValidator" type="Magento\Payment\Gateway\Validator\CountryValidator">
+        <arguments>
+            <argument name="config" xsi:type="object">SveaInvoicePaymentConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaInvoiceValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">SveaInvoiceConfigValueHandler</item>
+                <item name="can_cancel" xsi:type="string">Webbhuset\SveaWebpay\Gateway\Config\CanCancelHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaInvoiceConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">SveaInvoicePaymentConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaInvoicePaymentConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Webbhuset\SveaWebpay\Model\Ui\ConfigProvider::INVOICE_CODE</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaInvoiceCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="authorize" xsi:type="string">SveaInvoiceAuthorizeCommand</item>
+                <item name="capture" xsi:type="string">SveaInvoiceCaptureCommand</item>
+                <item name="void" xsi:type="string">SveaInvoiceCancelCommand</item>
+                <item name="cancel" xsi:type="string">SveaInvoiceCancelCommand</item>
+                <item name="deny_payment" xsi:type="string">SveaInvoiceCancelCommand</item>
+                <item name="refund" xsi:type="string">SveaInvoiceRefundCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaInvoiceAuthorizeCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\Invoice\NewOrderBuilder</argument>
+            <argument name="requestValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Request\NewOrderRequestValidator</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\SimpleClient</argument>
+            <argument name="handler" xsi:type="object">SveaInvoiceAuthorizeHandler</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaInvoiceAuthorizeHandler" type="Magento\Payment\Gateway\Response\HandlerChain">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="payment_details" xsi:type="string">Webbhuset\SveaWebpay\Gateway\Response\ResponseHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaInvoiceCaptureCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\CaptureOrderBuilder</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\Invoice\CaptureClient</argument>
+            <argument name="handler" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Response\InvoiceIdResponseHandler</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaInvoiceCancelCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\CancelOrderBuilder</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\Invoice\CancelClient</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaInvoiceRefundCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\Invoice\RefundOrderBuilder</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\Invoice\RefundClient</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Paymentplan  -->
+    <virtualType name="SveaPaymentplanFacade" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">Webbhuset\SveaWebpay\Model\Ui\ConfigProvider::PAYMENTPLAN_CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Webbhuset\SveaWebpay\Block\Info\SveaInfo</argument>
+            <argument name="valueHandlerPool" xsi:type="object">SveaPaymentplanValueHandlerPool</argument>
+            <argument name="validatorPool" xsi:type="object">SveaPaymentplanValidatorPool</argument>
+            <argument name="commandPool" xsi:type="object">SveaPaymentplanCommandPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaPaymentplanValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="country" xsi:type="string">SveaPaymentplanCountryValidator</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SveaPaymentplanCountryValidator" type="Magento\Payment\Gateway\Validator\CountryValidator">
+        <arguments>
+            <argument name="config" xsi:type="object">SveaPaymentplanPaymentConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaPaymentplanValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">SveaPaymentplanConfigValueHandler</item>
+                <item name="can_cancel" xsi:type="string">Webbhuset\SveaWebpay\Gateway\Config\CanCancelHandler</item>
+                <item name="active" xsi:type="string">Webbhuset\SveaWebpay\Gateway\Config\PaymentplanIsActiveHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaPaymentplanConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">SveaPaymentplanPaymentConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaPaymentplanPaymentConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Webbhuset\SveaWebpay\Model\Ui\ConfigProvider::PAYMENTPLAN_CODE</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaPaymentplanCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="authorize" xsi:type="string">SveaPaymentplanAuthorizeCommand</item>
+                <item name="capture" xsi:type="string">SveaPaymentplanCaptureCommand</item>
+                <item name="void" xsi:type="string">SveaPaymentplanCancelCommand</item>
+                <item name="cancel" xsi:type="string">SveaPaymentplanCancelCommand</item>
+                <item name="refund" xsi:type="string">SveaPaymentplanRefundCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaPaymentplanCaptureCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\Paymentplan\CaptureOrderBuilder</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\SimpleClient</argument>
+            <argument name="handler" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Response\InvoiceIdResponseHandler</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaPaymentplanCancelCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\CancelOrderBuilder</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\Paymentplan\CancelClient</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaPaymentplanAuthorizeCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\Paymentplan\NewOrderBuilder</argument>
+            <argument name="requestValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Request\NewOrderRequestValidator</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\SimpleClient</argument>
+            <argument name="handler" xsi:type="object">SveaPaymentplanAuthorizeHandler</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaPaymentplanAuthorizeHandler" type="Magento\Payment\Gateway\Response\HandlerChain">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="payment_details" xsi:type="string">Webbhuset\SveaWebpay\Gateway\Response\ResponseHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaPaymentplanRefundCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\Paymentplan\RefundOrderBuilder</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\Paymentplan\RefundClient</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- CARD  -->
+    <virtualType name="SveaCardFacade" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">Webbhuset\SveaWebpay\Model\Ui\ConfigProvider::CARD_CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Webbhuset\SveaWebpay\Block\Info\SveaInfo</argument>
+            <argument name="valueHandlerPool" xsi:type="object">SveaCardValueHandlerPool</argument>
+            <argument name="validatorPool" xsi:type="object">SveaCardValidatorPool</argument>
+            <argument name="commandPool" xsi:type="object">SveaCardCommandPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaCardValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="country" xsi:type="string">SveaCardCountryValidator</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SveaCardCountryValidator" type="Magento\Payment\Gateway\Validator\CountryValidator">
+        <arguments>
+            <argument name="config" xsi:type="object">SveaCardPaymentConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaCardValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">SveaCardConfigValueHandler</item>
+                <item name="can_cancel" xsi:type="string">Webbhuset\SveaWebpay\Gateway\Config\CanCancelHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaCardConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">SveaCardPaymentConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaCardPaymentConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Webbhuset\SveaWebpay\Model\Ui\ConfigProvider::CARD_CODE</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaCardCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="capture" xsi:type="string">SveaCardCaptureCommand</item>
+                <item name="void" xsi:type="string">SveaCardCancelCommand</item>
+                <item name="cancel" xsi:type="string">SveaCardCancelCommand</item>
+                <item name="deny_payment" xsi:type="string">SveaCardCancelCommand</item>
+                <item name="refund" xsi:type="string">SveaCardRefundCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaCardCaptureCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\Hosted\DeliverOrderBuilder</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\SimpleClient</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaCardCancelCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\CancelOrderBuilder</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\Hosted\CancelClient</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaCardRefundCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\Hosted\RefundOrderBuilder</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\Hosted\RefundClient</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- DIRECT BANK  -->
+    <virtualType name="SveaBankFacade" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">Webbhuset\SveaWebpay\Model\Ui\ConfigProvider::DIRECT_BANK_CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Webbhuset\SveaWebpay\Block\Info\SveaInfo</argument>
+            <argument name="valueHandlerPool" xsi:type="object">SveaBankValueHandlerPool</argument>
+            <argument name="validatorPool" xsi:type="object">SveaBankValidatorPool</argument>
+            <argument name="commandPool" xsi:type="object">SveaBankCommandPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaBankValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="country" xsi:type="string">SveaBankCountryValidator</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SveaBankCountryValidator" type="Magento\Payment\Gateway\Validator\CountryValidator">
+        <arguments>
+            <argument name="config" xsi:type="object">SveaBankPaymentConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaBankValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">SveaBankConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaBankConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">SveaBankPaymentConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaBankPaymentConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Webbhuset\SveaWebpay\Model\Ui\ConfigProvider::DIRECT_BANK_CODE</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaBankCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="refund" xsi:type="string">SveaBankRefundCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SveaBankRefundCommand" type="Webbhuset\SveaWebpay\Gateway\Command\SveaCommand">
+        <arguments>
+            <argument name="builder" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Request\Hosted\RefundOrderBuilder</argument>
+            <argument name="client" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Http\SveaClient\Hosted\RefundClient</argument>
+            <argument name="responseValidator" xsi:type="object">Webbhuset\SveaWebpay\Gateway\Validator\Response\ResponseValidator</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Plugins -->
+    <type name="Magento\Sales\Model\Order">
+        <plugin name="OrderPlugin" type="Webbhuset\SveaWebpay\Plugin\OrderPlugin" sortOrder="1" disabled="false"/>
+    </type>
+
+    <type name="Magento\Quote\Model\Cart\TotalsConverter">
+        <plugin name="add_handling_fee" type="Webbhuset\SveaWebpay\Plugin\HandlingFeeTotalSegmentPlugin"/>
+    </type>
+
+    <preference for="Magento\Tax\Model\Sales\Total\Quote\Tax" type="Webbhuset\SveaWebpay\Model\Tax\Sales\Total\Quote\Tax" />
+
+</config>

@@ -1,0 +1,35 @@
+.config {
+  .svea-campaign-list {
+    padding-left: 2rem;
+
+    li {
+      margin-bottom: .4rem;
+
+    }
+  }
+}
+
+.svea-order-info {
+  display: flex;
+  flex-direction: column;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+
+    &:nth-child(odd) {
+      background: #f1f1f1;
+    }
+
+    > div {
+      display: flex;
+      flex: 1 1;
+      padding: 1rem;
+
+      &:last-child {
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+

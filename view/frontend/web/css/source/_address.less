@@ -1,0 +1,71 @@
+.svea-address-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 960px) {
+    flex-direction: row;
+  }
+
+  .svea-get-address {
+
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    padding: 3rem;
+
+    @media screen and (min-width: 960px) {
+      padding: 3rem 3rem 3rem 0;
+    }
+
+    input[type="text"] {
+      background: #ffffff;
+      background-clip: padding-box;
+      border: 1px solid #c2c2c2;
+      border-radius: 1px;
+      font-size: 14px;
+      height: 32px;
+      line-height: 1.42857143;
+      padding: 0 9px;
+      vertical-align: baseline;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 1.5rem;
+    }
+  }
+
+  .svea-address {
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+
+    padding: 0 3rem 3rem 3rem;
+
+    @media screen and (min-width: 960px) {
+      padding: 3rem;
+    }
+
+    address {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .svea-address-info {
+    font-weight: bold;
+  }
+
+}
+
+.svea-customer-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  >label {
+    display: flex;
+    padding: 0 1rem 1rem 1rem;
+  }
+}
