@@ -55,6 +55,17 @@ define(
                     return firstAvailable && firstAvailable.campaignCode;
                 }.bind(this)());
 
+                this.selectedCampaign = ko.pureComputed(function() {
+                    var campaigns = this.campaigns();
+                    var selectedCampaignCode = this.selectedCampaignCode();
+
+                    var selectedCampaign = ko.utils.arrayFilter(campaigns, function(campaign) {
+                        return (campaign.campaignCode === selectedCampaignCode);
+                    })[0];
+
+                    return selectedCampaign;
+                }, this);
+
                 this.pricePerMonthData = ko.observable([]);
 
                 // Fetch monthly cost
