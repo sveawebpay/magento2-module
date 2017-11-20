@@ -260,7 +260,7 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
     /**
      * This method is not used in this module, but must be here to satisfy the interface
      */
-    public function getCheckoutSecret()
+    public function getCheckoutSecret($country = NULL)
     {
         return;
     }
@@ -268,7 +268,7 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
     /**
      * This method is not used in this module, but must be here to satisfy the interface
      */
-    public function getCheckoutMerchantId()
+    public function getCheckoutMerchantId($country = NULL)
     {
         return;
     }
