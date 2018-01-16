@@ -9,7 +9,6 @@
 
 namespace Webbhuset\SveaWebpay\Model\Config\Api;
 
-use Magento\Framework\Encryption\EncryptorInterface;
 use Svea\WebPay\Config\ClientNumber;
 use Svea\WebPay\Config\ConfigurationService;
 
@@ -33,10 +32,6 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
      * @var \Magento\Framework\UrlInterface
      */
     protected $urlBuilder;
-    /**
-     * @var EncryptorInterface
-     */
-    protected $crypt;
 
     /**
      * Configuration constructor.
@@ -45,13 +40,10 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
      */
     public function __construct(
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\UrlInterface $urlBuilder,
-        EncryptorInterface $crypt
-
+        \Magento\Framework\UrlInterface $urlBuilder
     ) {
         $this->scopeConfig = $scopeConfig;
         $this->urlBuilder = $urlBuilder;
-        $this->crypt = $crypt;
     }
 
 
@@ -60,20 +52,15 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
      *
      * @param $type
      * @param $key
-     * @param bool $storedEncrypted
      * @return mixed|string
      */
-    protected function getConfigValue($type, $key, $storedEncrypted = false)
+    protected function getConfigValue($type, $key)
     {
         $method = $this->sveaCodeToConfigCode($type);
 
         $fullKey = strtolower("payment/{$method}/{$key}");
 
         $value = $this->scopeConfig->getValue($fullKey, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-
-        if ($storedEncrypted) {
-            $value = $this->crypt->decrypt($value);
-        }
 
         return $value;
     }
@@ -168,7 +155,7 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
      */
     public function getUsername($type, $country) {
         $key = "username_{$country}";
-        $value = $this->getConfigValue($type, $key, true);
+        $value = $this->getConfigValue($type, $key);
 
         return $value;
     }
@@ -178,7 +165,7 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
      */
     public function getPassword($type, $country) {
         $key = "password_{$country}";
-        $value = $this->getConfigValue($type, $key, true);
+        $value = $this->getConfigValue($type, $key);
 
         return $value;
     }
@@ -188,7 +175,7 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
      */
     public function getClientNumber($type, $country) {
         $key = "client_number_{$country}";
-        $value = $this->getConfigValue($type, $key, true);
+        $value = $this->getConfigValue($type, $key);
 
         return $value;
     }
@@ -198,7 +185,7 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
      */
     public function getMerchantId($type, $country) {
         $key = "merchant_id";
-        $value = $this->getConfigValue($type, $key, true);
+        $value = $this->getConfigValue($type, $key);
 
         return $value;
     }
@@ -213,7 +200,7 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
             $key = "secret_{$country}";
 
         }
-        $value = $this->getConfigValue($type, $key, true);
+        $value = $this->getConfigValue($type, $key);
 
         return $value;
     }

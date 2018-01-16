@@ -29,11 +29,9 @@
 
                 <field id="merchant_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Merchant Id</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="secret" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Secret</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="test_mode" translate="label" type="select" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -105,80 +103,62 @@
 
                 <field id="username_se" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Sweden</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_se" translate="label" type="text" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Sweden</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_se" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Sweden</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="username_fi" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Finland</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_fi" translate="label" type="text" sortOrder="41" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Finland</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_fi" translate="label" type="text" sortOrder="42" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Finland</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="username_no" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Norway</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_no" translate="label" type="text" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Norway</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_no" translate="label" type="text" sortOrder="52" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Norway</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="username_dk" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Denmark</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_dk" translate="label" type="text" sortOrder="61" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Denmark</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_dk" translate="label" type="text" sortOrder="62" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Denmark</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="username_de" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Germany</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_de" translate="label" type="text" sortOrder="71" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Germany</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_de" translate="label" type="text" sortOrder="72" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Germany</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="username_nl" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Netherlands</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_nl" translate="label" type="text" sortOrder="81" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Netherlands</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_nl" translate="label" type="text" sortOrder="82" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Netherlands</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
             </group>
 
@@ -239,80 +219,62 @@
 
                 <field id="username_se" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Sweden</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_se" translate="label" type="text" sortOrder="201" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Sweden</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_se" translate="label" type="text" sortOrder="202" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Sweden</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="username_fi" translate="label" type="text" sortOrder="203" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Finland</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_fi" translate="label" type="text" sortOrder="204" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Finland</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_fi" translate="label" type="text" sortOrder="205" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Finland</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="username_no" translate="label" type="text" sortOrder="206" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Norway</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_no" translate="label" type="text" sortOrder="207" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Norway</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_no" translate="label" type="text" sortOrder="208" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Norway</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="username_dk" translate="label" type="text" sortOrder="209" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Denmark</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_dk" translate="label" type="text" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Denmark</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_dk" translate="label" type="text" sortOrder="211" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Denmark</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="username_de" translate="label" type="text" sortOrder="212" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Germany</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_de" translate="label" type="text" sortOrder="213" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Germany</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_de" translate="label" type="text" sortOrder="214" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Germany</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
 
                 <field id="username_nl" translate="label" type="text" sortOrder="215" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username Netherlands</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="password_nl" translate="label" type="text" sortOrder="216" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password Netherlands</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
                 <field id="client_number_nl" translate="label" type="text" sortOrder="217" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Client Number Netherlands</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
             </group>
 
