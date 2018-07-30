@@ -74,7 +74,7 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
         $apiConfig = $this->apiConfig;
         $sveaOrder = WebPay::createOrder($apiConfig);
 
-        $items = $order->getItems();
+        $items = $this->getAllVisibleItems($order);
         $address = $order->getBillingAddress();
 
         $sveaOrder->setOrderDate(date('c'));

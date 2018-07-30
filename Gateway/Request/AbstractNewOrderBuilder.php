@@ -104,4 +104,27 @@ class AbstractNewOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\O
             ->setVatPercent(0)
         );
     }
+
+    /**
+     * Since order->getAllVisibleItems() is not working
+     * before the order is saved, we do this here
+     *
+     * @param [type] $order
+     * @return void
+     */
+    protected function getAllVisibleItems(
+        \Magento\Sales\Api\Data\OrderInterface $order
+    ) {
+        $items = [];
+        foreach ($order->getItems() as $item) {
+            $parentQuoteItemId = $item->getParentItem()
+                ? $item->getParentItem()->getQuoteItemId()
+                : null;
+
+            if (!$item->isDeleted() && !$parentQuoteItemId) {
+                $items[] = $item;
+            }
+        }
+        return $items;
+    }
 }
