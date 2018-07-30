@@ -70,7 +70,7 @@ class AbstractNewOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\O
             $orderRow = $this->rowBuilder->build($item);
             $order->addOrderRow($orderRow);
 
-            if ($item->getDiscountAmount()) {
+            if ((float) $item->getDiscountAmount()) {
                 $discountRow = $this->discountBuilder->build($item);
                 $order->addDiscount($discountRow);
             }
