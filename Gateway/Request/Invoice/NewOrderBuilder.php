@@ -87,8 +87,10 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
 
         $this->addShippingFee($order, $sveaOrder);
 
-        $invoiceFee = $this->invoiceFeeRowBuilder->build($order);
-        $sveaOrder->addFee($invoiceFee);
+        if ((float) $order->getHandlingFeeAmount()) {
+            $invoiceFee = $this->invoiceFeeRowBuilder->build($order);
+            $sveaOrder->addFee($invoiceFee);
+        }
 
         $request = $sveaOrder->useInvoicePayment();
 
