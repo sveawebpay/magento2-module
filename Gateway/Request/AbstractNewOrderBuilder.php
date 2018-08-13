@@ -64,6 +64,9 @@ class AbstractNewOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\O
     {
         foreach ($items as $item) {
             if ($item->getProductType() == 'bundle') {
+                $children = $item->getChildrenItems();
+                $this->addOrderItems($order, $children);
+
                 continue;
             }
 
