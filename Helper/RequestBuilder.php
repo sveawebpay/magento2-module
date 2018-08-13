@@ -84,6 +84,7 @@ class RequestBuilder
         $partialActionRow = WebPayItem::numberedOrderRow()
             ->setRowNumber($row->rowNumber)
             ->setArticleNumber($row->articleNumber)
+            ->setDescription($row->description)
             ->setAmountExVat($row->amountExVat)
             ->setVatPercent($row->vatPercent)
             ->setQuantity($invoiceQty);
