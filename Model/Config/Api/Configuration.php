@@ -21,6 +21,7 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
 {
     const SSN_KEY = 'svea_ssn';
     const ADDRESS_RESPONSE_KEY = 'svea_address_response';
+    const CUSTOMER_TYPE_KEY = 'svea_customer_type';
     const SELECTED_ADDRESS_SELECTOR_KEY = 'svea_selected_address';
     const SELECTED_HOSTED_METHOD_KEY = 'selected_hosted_method';
 

@@ -122,7 +122,10 @@ class Order
     public function getCustomerType(\Magento\Sales\Model\Order $order)
     {
         $payment = $order->getPayment();
-        $customerType = $payment->getAdditionalInformation('customerType') ?: 'private';
+
+        $customerType = $payment->getAdditionalInformation(
+            \Webbhuset\SveaWebpay\Model\Config\Api\Configuration::CUSTOMER_TYPE_KEY
+        ) ?: \Webbhuset\SveaWebpay\Model\Address::PRIVATE_TYPE;
 
         return $customerType;
     }

@@ -115,7 +115,12 @@ class Get extends \Magento\Framework\App\Action\Action
      */
     protected function setAddressOnPayment($payment, $addressResponse)
     {
+        $customerType = isset($addressResponse[0]['customer_type'])
+            ? $addressResponse[0]['customer_type']
+            : \Webbhuset\SveaWebpay\Model\Address::PRIVATE_TYPE;
+
         $payment->setAdditionalInformation(Configuration::ADDRESS_RESPONSE_KEY, $addressResponse)
+            ->setAdditionalInformation(Configuration::CUSTOMER_TYPE_KEY, $customerType)
             ->save();
     }
 
