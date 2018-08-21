@@ -63,20 +63,30 @@ class AbstractNewOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\O
     public function addOrderItems($order, $items)
     {
         foreach ($items as $item) {
-            if ($item->getProductType() == 'bundle') {
+            if ($item->isChildrenCalculated()) {
                 $children = $item->getChildrenItems();
-                $this->addOrderItems($order, $children);
-
-                continue;
+                foreach ($children as $childItem) {
+                    $order = $this->processRow($order, $childItem, $item);
+                }
+            } else {
+                $order = $this->processRow($order, $item);
             }
+        }
 
+        return $order;
+    }
+
+    protected function processRow($order, $item, $parentItem = null) {
+        if ($parentItem != null && $parentItem->getId()) {
+            $orderRow = $this->rowBuilder->build($item, $parentItem->getQty());
+            $order->addOrderRow($orderRow);
+        } else {
             $orderRow = $this->rowBuilder->build($item);
             $order->addOrderRow($orderRow);
-
-            if ((float) $item->getDiscountAmount()) {
-                $discountRow = $this->discountBuilder->build($item);
-                $order->addDiscount($discountRow);
-            }
+        }
+        if ((float)$item->getDiscountAmount()) {
+            $discountRow = $this->discountBuilder->build($item);
+            $order->addDiscount($discountRow);
         }
 
         return $order;

@@ -26,10 +26,10 @@ class OrderRowBuilder
     }
 
 
-    public function build($item)
+    public function build($item, $multiplier = 1)
     {
         $orderRow = WebPayItem::orderRow();
-        $qty = $item->getQtyOrdered() ?: $item->getQty();
+        $qty = $item->getQtyOrdered() ?: $item->getQty() * $multiplier;
 
         $quoteItemId = $item->getQuoteItemId();
         $sku = $item->getSku();
