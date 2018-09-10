@@ -9,7 +9,7 @@
         "sveaekonomi/webpay": "dev-master"
     },
     "type": "magento2-module",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
