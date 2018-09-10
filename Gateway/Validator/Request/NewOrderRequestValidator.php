@@ -17,7 +17,10 @@ class NewOrderRequestValidator extends AbstractValidator
         $requestGrandTotal = $requestTotals['total_incvat'];
         $grandTotal = $payment->getOrder()->getGrandTotal();
 
-        if ((int) ($requestGrandTotal * 100) != (int) ($grandTotal * 100)) {
+        $gt =  (int) round($requestGrandTotal * 100);
+        $rgt = (int) round($grandTotal * 100);
+
+        if ($gt != $rgt) {
             return $this->createResult(
                 false,
                 [__('Svea error 1100 : Totals do not match')]
