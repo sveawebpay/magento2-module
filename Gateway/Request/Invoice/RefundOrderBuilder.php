@@ -59,6 +59,7 @@ class RefundOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\OrderA
         $articleRows        = $this->requestBuilderHelper->getRowsWithType('articles', $sortedOrderRows);
         $discountRows       = $this->requestBuilderHelper->getRowsWithType('discounts', $sortedOrderRows);
         $shippingRows       = $this->requestBuilderHelper->getRowsWithType('shipping', $sortedOrderRows);
+        $adjustmentRows     = $this->requestBuilderHelper->getRowsWithType('adjustment', $sortedOrderRows);
         $invoice            = $creditMemo->getInvoice();
         $invoiceId          = $invoice->getSveaInvoiceId();
         $countryCode        = $this->helper->getCountryCode($order);
@@ -105,6 +106,10 @@ class RefundOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\OrderA
             }
         }
 
+        foreach ($adjustmentRows as $row) {
+            $rowsToCredit[] = $row->rowNumber;
+        }
+
         $handlingFee = $creditMemo->getHandlingFeeAmount();
         if ($handlingFee) {
             $handlingFeeRows = $this->requestBuilderHelper
@@ -117,6 +122,7 @@ class RefundOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\OrderA
         }
 
         $request->setRowsToCredit($rowsToCredit);
+        // Credit memo adjustment fees, not to be mixed with svea adjustment
         $adjustment = $creditMemo->getAdjustment() + $shippingAdjustment;
 
         if ($adjustment) {

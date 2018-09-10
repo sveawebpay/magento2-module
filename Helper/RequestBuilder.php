@@ -19,6 +19,7 @@ class RequestBuilder
     const ROW_TYPE_DISCOUNT = 'discount';
     const ROW_TYPE_SHIPPING = 'shipping';
     const ROW_TYPE_INVOICE_FEE = 'invoice_fee';
+    const ROW_TYPE_ADJUSTMENT = 'adjustment';
 
     protected $scopeConfig;
 
@@ -255,6 +256,7 @@ class RequestBuilder
             'articles'  => [],
             'shipping'  => [],
             'discounts' => [],
+            'adjustment' => [],
         ];
 
         foreach ($rows as $row) {
@@ -276,6 +278,11 @@ class RequestBuilder
 
             if ($rowType == self::ROW_TYPE_INVOICE_FEE) {
                 $sorted['invoice_fee'][] = $row;
+                continue;
+            }
+
+            if ($rowType == self::ROW_TYPE_ADJUSTMENT) {
+                $sorted['adjustment'][] = $row;
                 continue;
             }
 
@@ -301,6 +308,10 @@ class RequestBuilder
 
         if ($this->isInvoiceFeeRow($row)) {
             return self::ROW_TYPE_INVOICE_FEE;
+        }
+
+        if ($this->isAdjustmentRow($row)) {
+            return self::ROW_TYPE_ADJUSTMENT;
         }
 
         throw new \Exception('Row is not recognized');
@@ -366,6 +377,25 @@ class RequestBuilder
         }
 
         if ($row->name == 'Payment Handling Fee') {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if row is an adjustment row
+     *
+     * @param $row
+     * @return bool
+     */
+    protected function isAdjustmentRow($row)
+    {
+        if ($row->description == 'Adjustment') {
+            return true;
+        }
+
+        if ($row->name == 'Adjustment') {
             return true;
         }
 

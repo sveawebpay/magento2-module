@@ -130,6 +130,14 @@ class CaptureOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\Order
             $rowsToDeliver[] = $row->rowNumber;
         }
 
+        foreach ($this->requestBuilderHelper->getRowsWithType('adjustment', $sortedOrderRows) as $row) {
+            if ($row->status == NumberedOrderRow::ORDERROWSTATUS_DELIVERED) {
+                continue;
+            }
+
+            $rowsToDeliver[] = $row->rowNumber;
+        }
+
         return $request->setRowsToDeliver($rowsToDeliver);
     }
 }
