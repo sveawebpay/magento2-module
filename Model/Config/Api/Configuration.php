@@ -77,6 +77,19 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
     }
 
     /**
+     * Get callback order url. Used for asynchronous feedback
+     *
+     * @return string
+     */
+    public function getHostedCallbackUrl($id)
+    {
+        return $this->urlBuilder->getUrl(
+            'sveawebpay/callback/callback',
+            ['secure' => true, 'id' => $id]
+        );
+    }
+
+    /**
      * Get Svea Webpay method code from Magneto payment method code
      *
      * @param $methodCode Magento payment method code

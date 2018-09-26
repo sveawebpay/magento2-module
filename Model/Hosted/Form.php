@@ -53,9 +53,11 @@ class Form
     {
         $request = $this->builder->build($order->getPayment());
         $returnUrl = $this->apiConfig->getHostedReturnUrl();
+        $callbackUrl = $this->apiConfig->getHostedCallbackUrl($order->getId());
         $language = $this->getISO639language();
 
         $form = $request->setReturnUrl($returnUrl)
+            ->setCallbackUrl($callbackUrl)
             ->setCardPageLanguage($language)
             ->getPaymentForm();
 
