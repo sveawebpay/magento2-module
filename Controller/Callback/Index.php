@@ -16,7 +16,6 @@ use Webbhuset\SveaWebpay\Model\Hosted\Response;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
-    protected $apiConfig;
     protected $checkoutSession;
     protected $orderRepository;
     protected $hostedResponse;
