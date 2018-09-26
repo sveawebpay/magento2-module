@@ -83,10 +83,18 @@ class Configuration implements \Svea\WebPay\Config\ConfigurationProvider
      */
     public function getHostedCallbackUrl($id)
     {
-        return $this->urlBuilder->getUrl(
+        $url = $this->urlBuilder->getUrl(
             'sveawebpay/callback/callback',
             ['secure' => true, 'id' => $id]
         );
+
+        $customUrl = $this->getConfigValue(self::HOSTED_TYPE, 'custom_callback_url');
+        if ($customUrl) {
+            $baseUrl = $this->urlBuilder->getBaseUrl();
+            $url = str_replace($baseUrl, $customUrl, $url);
+        }
+
+        return $url;
     }
 
     /**

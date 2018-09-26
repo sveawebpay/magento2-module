@@ -43,6 +43,11 @@
                     <label>Include options on order rows (Size / Color etc.)</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+
+                <field id="custom_callback_url" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom callback url</label>
+                    <comment>Only needed in development. Used for when you need to tunnel callbacks from Svea to your site when it's not accessible from the internet. End with / </comment>
+                </field>
             </group>
 
             <!-- Invoice settings -->
