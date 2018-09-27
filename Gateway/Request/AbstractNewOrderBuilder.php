@@ -112,7 +112,7 @@ class AbstractNewOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\O
     protected function addAdjustment($sveaOrder, $amount)
     {
         $sveaOrder->addDiscount( WebPayItem::fixedDiscount()
-            ->setAmountIncVat($amount)    // a negative discount shows up as a positive adjustment
+            ->setAmountIncVat(round($amount, 4))    // a negative discount shows up as a positive adjustment
             ->setDescription('Adjustment')
             ->setVatPercent(0)
         );
