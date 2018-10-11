@@ -141,7 +141,8 @@ class Order
     }
 
     /**
-     * Check if address should be replaced
+     * Check if address should be fetched and replaced
+     * before order is placed
      *
      * @param $countryCode
      * @param $customerType
