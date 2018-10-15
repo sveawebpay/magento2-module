@@ -29,15 +29,18 @@ class CaptureOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\Order
      * @var RequestBuilder
      */
     protected $requestBuilderHelper;
+    protected $messageManager;
 
     public function __construct(
         OrderHelper $helper,
         RequestBuilderHelper $requestBuilderHelper,
-        Configuration $apiConfig
+        Configuration $apiConfig,
+        \Magento\Framework\Message\ManagerInterface $messageManager
     ) {
         $this->helper = $helper;
         $this->apiConfig = $apiConfig;
         $this->requestBuilderHelper = $requestBuilderHelper;
+        $this->messageManager = $messageManager;
     }
 
     public function build(\Magento\Sales\Model\Order\Payment $payment)
@@ -53,8 +56,13 @@ class CaptureOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\Order
         $countryCode    = $billingAddress->getCountryId();
         $invoice        = $order->getInvoiceCollection()->getLastItem();
         $sveaOrderId    = $order->getExtOrderId();
+        $sveaOrder      = $this->helper->fetchSveaOrder($order);
 
-        $sveaOrder          = $this->helper->fetchSveaOrder($order);
+        if ($sveaOrder->orderDeliveryStatus == 'Delivered') {
+            $this->messageManager->addSuccessMessage(__('Order is already delivered in Svea. Syncing status.'));
+
+            return false;
+        }
         $sortedOrderRows    = $this->requestBuilderHelper->sortOrderRows($sveaOrder->numberedOrderRows);
 
         $distributionType = $this->requestBuilderHelper->getDistributionType($order);

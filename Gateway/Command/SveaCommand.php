@@ -82,6 +82,11 @@ class SveaCommand implements CommandInterface
 
         $request = $this->builder->build($payment);
 
+        // No request should be sent
+        if ($request === false) {
+            return;
+        }
+
         if ($this->requestValidator) {
             $result = $this->requestValidator->validate($request, $payment);
 
