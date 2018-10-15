@@ -18,6 +18,7 @@ class DeliverOrderBuilder implements OrderActionBuilderInterface
 {
     protected $apiConfig;
     protected $helper;
+    protected $messageManager;
 
     /**
      * DeliverOrderBuilder constructor.
@@ -26,10 +27,12 @@ class DeliverOrderBuilder implements OrderActionBuilderInterface
      */
     public function __construct(
         Configuration $apiConfig,
-        OrderHelper $helper
+        OrderHelper $helper,
+        \Magento\Framework\Message\ManagerInterface $messageManager
     ) {
         $this->apiConfig = $apiConfig;
         $this->helper = $helper;
+        $this->messageManager = $messageManager;
     }
 
     /**
@@ -40,6 +43,14 @@ class DeliverOrderBuilder implements OrderActionBuilderInterface
     {
         $order = $payment->getOrder();
         $countryCode = $this->helper->getCountryCode($order);
+
+        $sveaOrder = $this->helper->fetchSveaOrder($order);
+
+        if ($sveaOrder->status == 'CONFIRMED' || $sveaOrder->status == 'DELIVERED') {
+            $this->messageManager->addSuccessMessage(__('Order is already delivered in Svea. Syncing status.'));
+
+            return false;
+        }
 
         $request = WebPay::deliverOrder($this->apiConfig)
             ->setTransactionId($order->getExtOrderId())
