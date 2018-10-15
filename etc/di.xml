@@ -350,10 +350,6 @@
     </virtualType>
 
     <!-- Plugins -->
-    <type name="Magento\Sales\Model\Order">
-        <plugin name="OrderPlugin" type="Webbhuset\SveaWebpay\Plugin\OrderPlugin" sortOrder="1" disabled="false"/>
-    </type>
-
     <type name="Magento\Quote\Model\Cart\TotalsConverter">
         <plugin name="add_handling_fee" type="Webbhuset\SveaWebpay\Plugin\HandlingFeeTotalSegmentPlugin"/>
     </type>
