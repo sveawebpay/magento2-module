@@ -55,6 +55,8 @@
                         <span data-bind="i18n: 'get_address'"></span>
                     </button>
                 <!-- /ko -->
+
+                <span data-bind="i18n: 'The invoice and items will be sent to the address registered to your social security number'"></span>
             </div>
 
             <div class="svea-address">
@@ -87,11 +89,6 @@
                         <span data-bind="text: city"></span>
                     </address>
                     <!-- /ko -->
-
-                    <!-- ko if: hasAddresses() -->
-                        <span class="svea-address-info" data-bind="i18n: 'Your items will be shipped to this address.'"></span>
-                    <!-- /ko -->
-
                 <!-- /ko -->
             </div>
         </div>
@@ -133,4 +130,4 @@
         </div>
     </div>
 </div>
-        
+
