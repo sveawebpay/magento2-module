@@ -46,7 +46,7 @@ class DeliverOrderBuilder implements OrderActionBuilderInterface
 
         $sveaOrder = $this->helper->fetchSveaOrder($order);
 
-        if ($sveaOrder->status == 'CONFIRMED' || $sveaOrder->status == 'DELIVERED') {
+        if (isset($sveaOrder->status) && ($sveaOrder->status == 'CONFIRMED' || $sveaOrder->status == 'DELIVERED')) {
             $this->messageManager->addSuccessMessage(__('Order is already delivered in Svea. Syncing status.'));
 
             return false;
