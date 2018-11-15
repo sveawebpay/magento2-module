@@ -116,10 +116,9 @@ define(
             getPricePerMonthForCampaign: function(campaignCode) {
                 var data = this.pricePerMonthData();
 
-                var campaignData = data.find(function(el) {
+                var campaignData = data.filter(function(el) {
                     return el.campaignCode === campaignCode;
-                });
-
+                })[0];
 
                 if (!campaignData) {
                     return this.formatPrice(0);
