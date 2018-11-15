@@ -55,6 +55,6 @@ class CanCancelHandler implements ValueHandlerInterface
             return false;
         }
 
-        return $payment instanceof Payment && !(bool)$payment->getAmountPaid();
+        return true;
     }
 }
