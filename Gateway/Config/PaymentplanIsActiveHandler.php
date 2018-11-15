@@ -51,6 +51,9 @@ class PaymentplanIsActiveHandler implements ValueHandlerInterface
         $campaigns = $this->scopeConfig
             ->getValue($key, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
-        return (bool) $campaigns;
+        $isActive = $this->scopeConfig
+            ->getValue('payment/svea_paymentplan/active', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+
+        return $isActive && (bool) $campaigns;
     }
 }
