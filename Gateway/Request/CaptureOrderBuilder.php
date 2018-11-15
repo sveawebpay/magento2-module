@@ -90,6 +90,10 @@ class CaptureOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\Order
             }
 
             $invoiceQty = $item['qty'];
+            if (!(float)$invoiceQty) {
+                // do not capture items with qty 0
+                continue;
+            }
             $needsUpdate = $row->quantity != $invoiceQty;
 
             $discountRow = $this->requestBuilderHelper->findMatchingDiscountRow($discountRows, $item);
