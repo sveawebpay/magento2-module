@@ -44,8 +44,10 @@ class Get extends \Magento\Backend\App\Action
      */
     public function execute()
     {
+        $params = $this->getRequest()->getParams();
+
         try {
-            $campaigns = $this->campaign->fetchCampaignsFromSvea();
+            $campaigns = $this->campaign->fetchCampaignsFromSvea($params);
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }

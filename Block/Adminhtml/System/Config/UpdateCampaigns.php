@@ -81,7 +81,12 @@ class UpdateCampaigns
      */
     protected function getFetchCampaignsUrl()
     {
-        return $this->getUrl('sveawebpay/campaigns/get');
+        $params = [
+            'scope' => $this->element->getScope(),
+            'scope_id' => $this->element->getScopeId(),
+        ];
+
+        return $this->getUrl('sveawebpay/campaigns/get', $params);
     }
 
     /**

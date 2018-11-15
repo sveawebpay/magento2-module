@@ -22,6 +22,10 @@ class Campaign
      * @var ScopeConfigInterface
      */
     protected $scopeConfig;
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    protected $storeManager;
 
     /**
      * Campaign constructor.
@@ -30,10 +34,13 @@ class Campaign
      */
     public function __construct(
         Configuration $apiConfig,
-        ScopeConfigInterface $scopeConfig
+        ScopeConfigInterface $scopeConfig,
+        \Magento\Store\Model\StoreManagerInterface $storeManager
     ) {
         $this->apiConfig = $apiConfig;
         $this->scopeConfig = $scopeConfig;
+        $this->storeManager = $storeManager;
+
     }
 
     /**
@@ -42,13 +49,23 @@ class Campaign
      * @return array|\Svea\WebPay\WebService\WebServiceResponse\PaymentPlanParamsResponse
      * @throws \Exception
      */
-    public function fetchCampaignsFromSvea()
+    public function fetchCampaignsFromSvea($params)
     {
-        if (!$this->apiConfig->isActive('svea_paymentplan')) {
-            return [];
+        $scopeId = isset($params['scope_id']) ? $params['scope_id'] : null;
+
+        if ($params['scope'] === 'websites') {
+            $code = $this->getWebsiteCodeById($scopeId);
+            $scope = \Magento\Store\Model\ScopeInterface::SCOPE_WEBSITE;
+        } else {
+            $code = $this->getStoreCodeById($scopeId);
+            $scope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
         }
 
-        $countryCode = $this->scopeConfig->getValue(\Magento\Directory\Helper\Data::XML_PATH_DEFAULT_COUNTRY, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $countryCode = $this->scopeConfig->getValue(
+            \Magento\Directory\Helper\Data::XML_PATH_DEFAULT_COUNTRY,
+            $scope,
+            $code
+        );
 
         if (!$countryCode) {
             $message = 'Country code is not set. Set it in General -> General -> Country Options -> Default Country';
@@ -100,5 +117,19 @@ class Campaign
         }
 
         return $campaignData->campaignCodes;
+    }
+
+    protected function getStoreCodeById($id)
+    {
+        $store = $this->storeManager->getStore($id);
+
+        return $store->getCode();
+    }
+
+    protected function getWebsiteCodeById($id)
+    {
+        $website = $this->storeManager->getWebsite($id);
+
+        return $website->getCode();
     }
 }
