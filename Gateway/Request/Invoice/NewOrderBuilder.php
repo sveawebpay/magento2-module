@@ -98,7 +98,7 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
         $requestGrandTotal = $requestTotals['total_incvat'];
         $grandTotal = $payment->getOrder()->getGrandTotal();
 
-        $adjustmentAmount = $requestGrandTotal - $grandTotal;
+        $adjustmentAmount = number_format($requestGrandTotal, 4) - number_format($grandTotal, 4);
         if (abs($adjustmentAmount) > 0) {
             $this->addAdjustment($sveaOrder, $adjustmentAmount);
 
