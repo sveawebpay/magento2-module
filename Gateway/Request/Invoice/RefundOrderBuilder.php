@@ -49,13 +49,14 @@ class RefundOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\OrderA
     public function getCreditMemoRequest($creditMemo)
     {
         $order              = $creditMemo->getOrder();
+        $payment            = $order->getPayment();
         $itemCollection     = $creditMemo->getItems();
         $creditTotal        = $creditMemo->getGrandTotal();
         $taxAmount          = $creditMemo->getTaxAmount();
         $creditTotalExVat   = $creditTotal - $taxAmount;
         $items              = $this->requestBuilderHelper->getItemData($itemCollection);
         $sveaOrder          = $this->helper->fetchSveaOrder($order);
-        $sortedOrderRows    = $this->requestBuilderHelper->sortOrderRows($sveaOrder->numberedOrderRows);
+        $sortedOrderRows    = $this->requestBuilderHelper->sortOrderRows($sveaOrder->numberedOrderRows, $payment);
         $articleRows        = $this->requestBuilderHelper->getRowsWithType('articles', $sortedOrderRows);
         $discountRows       = $this->requestBuilderHelper->getRowsWithType('discounts', $sortedOrderRows);
         $shippingRows       = $this->requestBuilderHelper->getRowsWithType('shipping', $sortedOrderRows);

@@ -55,7 +55,8 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
         CustomerBuilder $customerBuilder,
         ShippingFeeBuilder $shippingFeeBuilder,
         Configuration $apiConfig,
-        Store $store
+        Store $store,
+        \Webbhuset\SveaWebpay\Helper\Order $orderHelper
     ) {
         $this->rowBuilder = $rowBuilder;
         $this->apiConfig = $apiConfig;
@@ -63,6 +64,7 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
         $this->customerBuilder = $customerBuilder;
         $this->shippingFeeBuilder = $shippingFeeBuilder;
         $this->store = $store;
+        $this->orderHelper = $orderHelper;
     }
 
     /**

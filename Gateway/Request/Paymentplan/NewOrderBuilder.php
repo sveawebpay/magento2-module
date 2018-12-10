@@ -48,7 +48,9 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
         CustomerBuilder $customerBuilder,
         ShippingFeeBuilder $shippingFeeBuilder,
         CampaignDataBuilder $campaignDataBuilder,
-        Configuration $apiConfig
+        Configuration $apiConfig,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Webbhuset\SveaWebpay\Helper\Order $orderHelper
     ) {
         $this->rowBuilder = $rowBuilder;
         $this->apiConfig = $apiConfig;
@@ -56,6 +58,7 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
         $this->customerBuilder = $customerBuilder;
         $this->shippingFeeBuilder = $shippingFeeBuilder;
         $this->campaignDataBuilder = $campaignDataBuilder;
+        $this->orderHelper = $orderHelper;
     }
 
     public function build(\Magento\Sales\Model\Order\Payment $payment)

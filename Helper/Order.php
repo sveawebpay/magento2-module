@@ -18,6 +18,9 @@ class Order
     protected $registry;
 
     const REGISTRY_KEY = 'svea_order';
+    const TRANSLATE_SHIPPING_FEE = 'svea_order_shipping_fee';
+    const TRANSLATE_PAYMENT_HANDLING_FEE = 'svea_order_payment_handling_fee';
+    const TRANSLATE_ADJUSTMENT = 'svea_order_adjustment';
     /**
      * @var \Magento\Backend\App\ConfigInterface
      */
@@ -157,5 +160,45 @@ class Order
         }
 
         return true;
+    }
+
+    /**
+     * Get translated row names, used for identifying rows
+     *
+     * @return array
+     */
+    public function getAllTranslatedRowNames()
+    {
+        return [
+            self::TRANSLATE_SHIPPING_FEE           => __('svea_order_shipping_fee')->__toString(),
+            self::TRANSLATE_PAYMENT_HANDLING_FEE   => __('svea_order_payment_handling_fee')->__toString(),
+            self::TRANSLATE_ADJUSTMENT             => __('svea_order_adjustment')->__toString(),
+        ];
+    }
+
+    /**
+     * Get translated row name
+     *
+     * @param String translation key
+     * @return String
+     */
+    public function getTranslatedRowName($key)
+    {
+        return $this->getAllTranslatedRowNames()[$key];
+    }
+
+    /**
+     * Get row names from payment. Fallback to old names to make them backwards compatible.
+     *
+     * @param \Magento\Sales\Model\Order\Payment\Info $payment
+     * @return array
+     */
+    public function getPaymentRowNames(\Magento\Sales\Model\Order\Payment\Info $payment)
+    {
+        return [
+            self::TRANSLATE_SHIPPING_FEE            => $payment->getAdditionalInformation(self::TRANSLATE_SHIPPING_FEE) ?: 'ShippingFee',
+            self::TRANSLATE_PAYMENT_HANDLING_FEE    => $payment->getAdditionalInformation(self::TRANSLATE_PAYMENT_HANDLING_FEE) ?: 'Payment Handling Fee',
+            self::TRANSLATE_ADJUSTMENT              => $payment->getAdditionalInformation(self::TRANSLATE_ADJUSTMENT) ?: 'Adjustment',
+        ];
     }
 }

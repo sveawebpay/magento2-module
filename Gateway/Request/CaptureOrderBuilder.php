@@ -57,13 +57,14 @@ class CaptureOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\Order
         $invoice        = $order->getInvoiceCollection()->getLastItem();
         $sveaOrderId    = $order->getExtOrderId();
         $sveaOrder      = $this->helper->fetchSveaOrder($order);
+        $payment        = $order->getPayment();
 
         if ($sveaOrder->orderDeliveryStatus == 'Delivered') {
             $this->messageManager->addSuccessMessage(__('Order is already delivered in Svea. Syncing status.'));
 
             return false;
         }
-        $sortedOrderRows    = $this->requestBuilderHelper->sortOrderRows($sveaOrder->numberedOrderRows);
+        $sortedOrderRows    = $this->requestBuilderHelper->sortOrderRows($sveaOrder->numberedOrderRows, $payment);
 
         $distributionType = $this->requestBuilderHelper->getDistributionType($order);
 

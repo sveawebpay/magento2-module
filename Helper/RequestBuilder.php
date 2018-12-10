@@ -22,14 +22,18 @@ class RequestBuilder
     const ROW_TYPE_ADJUSTMENT = 'adjustment';
 
     protected $scopeConfig;
+    protected $orderHelper;
 
     /**
      * RequestBuilder constructor.
      * @param ScopeConfigInterface $scopeConfig
      */
-    public function __construct(ScopeConfigInterface $scopeConfig)
-    {
+    public function __construct(
+        ScopeConfigInterface $scopeConfig,
+        \Webbhuset\SveaWebpay\Helper\Order $orderHelper
+    ) {
         $this->scopeConfig = $scopeConfig;
+        $this->orderHelper = $orderHelper;
     }
 
     /**
@@ -250,7 +254,7 @@ class RequestBuilder
      * @return array
      * @throws \Exception
      */
-    public function sortOrderRows(array $rows)
+    public function sortOrderRows(array $rows, \Magento\Sales\Model\Order\Payment\Info $payment)
     {
         $sorted = [
             'articles'  => [],
@@ -260,7 +264,7 @@ class RequestBuilder
         ];
 
         foreach ($rows as $row) {
-            $rowType = $this->getRowType($row);
+            $rowType = $this->getRowType($row, $payment);
             if ($rowType == self::ROW_TYPE_ARTICLE) {
                 $sorted['articles'][] = $row;
                 continue;
@@ -292,8 +296,10 @@ class RequestBuilder
         return $sorted;
     }
 
-    protected function getRowType($row)
+    protected function getRowType($row, $payment)
     {
+        $rowNames = $this->orderHelper->getPaymentRowNames($payment);
+
         if ($this->isArticleRow($row)) {
             return self::ROW_TYPE_ARTICLE;
         }
@@ -302,15 +308,15 @@ class RequestBuilder
             return self::ROW_TYPE_DISCOUNT;
         }
 
-        if ($this->isShippingFeeRow($row)) {
+        if ($this->isShippingFeeRow($row, $rowNames[\Webbhuset\SveaWebpay\Helper\Order::TRANSLATE_SHIPPING_FEE])) {
             return self::ROW_TYPE_SHIPPING;
         }
 
-        if ($this->isInvoiceFeeRow($row)) {
+        if ($this->isInvoiceFeeRow($row, $rowNames[\Webbhuset\SveaWebpay\Helper\Order::TRANSLATE_PAYMENT_HANDLING_FEE])) {
             return self::ROW_TYPE_INVOICE_FEE;
         }
 
-        if ($this->isAdjustmentRow($row)) {
+        if ($this->isAdjustmentRow($row, $rowNames[\Webbhuset\SveaWebpay\Helper\Order::TRANSLATE_ADJUSTMENT])) {
             return self::ROW_TYPE_ADJUSTMENT;
         }
 
@@ -351,13 +357,13 @@ class RequestBuilder
      * @param \Svea\WebPay\BuildOrder\RowBuilders\NumberedOrderRow $row
      * @return bool
      */
-    protected function isShippingFeeRow(\Svea\WebPay\BuildOrder\RowBuilders\NumberedOrderRow $row)
+    protected function isShippingFeeRow(\Svea\WebPay\BuildOrder\RowBuilders\NumberedOrderRow $row, $rowName)
     {
-        if ($row->description == 'ShippingFee') {
+        if ($row->description == $rowName) {
             return true;
         }
 
-        if ($row->name == 'ShippingFee') {
+        if ($row->name == $rowName) {
             return true;
         }
 
@@ -370,13 +376,13 @@ class RequestBuilder
      * @param $row
      * @return bool
      */
-    protected function isInvoiceFeeRow($row)
+    protected function isInvoiceFeeRow($row, $rowName)
     {
-        if ($row->description == 'Payment Handling Fee') {
+        if ($row->description == $rowName) {
             return true;
         }
 
-        if ($row->name == 'Payment Handling Fee') {
+        if ($row->name == $rowName) {
             return true;
         }
 
@@ -389,13 +395,13 @@ class RequestBuilder
      * @param $row
      * @return bool
      */
-    protected function isAdjustmentRow($row)
+    protected function isAdjustmentRow($row, $rowName)
     {
-        if ($row->description == 'Adjustment') {
+        if ($row->description == $rowName) {
             return true;
         }
 
-        if ($row->name == 'Adjustment') {
+        if ($row->name == $rowName) {
             return true;
         }
 

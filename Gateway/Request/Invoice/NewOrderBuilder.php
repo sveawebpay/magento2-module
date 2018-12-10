@@ -28,6 +28,7 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
     protected $shippingFeeBuilder;
     protected $campaignDataBuilder;
     protected $invoiceFeeRowBuilder;
+    protected $orderHelper;
 
     /**
      * NewOrderBuilder constructor.
@@ -46,7 +47,9 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
         ShippingFeeBuilder $shippingFeeBuilder,
         InvoiceFeeRowBuilder $invoiceFeeRowBuilder,
         CampaignDataBuilder $campaignDataBuilder,
-        Configuration $apiConfig
+        Configuration $apiConfig,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Webbhuset\SveaWebpay\Helper\Order $orderHelper
     ) {
         $this->rowBuilder = $rowBuilder;
         $this->apiConfig = $apiConfig;
@@ -55,6 +58,7 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
         $this->shippingFeeBuilder = $shippingFeeBuilder;
         $this->invoiceFeeRowBuilder = $invoiceFeeRowBuilder;
         $this->campaignDataBuilder = $campaignDataBuilder;
+        $this->orderHelper = $orderHelper;
     }
 
     /**

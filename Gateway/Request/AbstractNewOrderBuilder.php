@@ -40,19 +40,25 @@ class AbstractNewOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\O
      * @var \Webbhuset\SveaWebpay\Gateway\Request\CampaignDataBuilder
      */
     protected $campaignDataBuilder;
+    /**
+     * @var \Webbhuset\SveaWebpay\Helper\RequestBuilder
+     */
+    protected $orderHelper;
 
     public function __construct(
         OrderRowBuilder $rowBuilder,
         DiscountOrderRowBuilder $discountBuilder,
         CustomerBuilder $customerBuilder,
         ShippingFeeBuilder $shippingFeeBuilder,
-        Configuration $apiConfig
+        Configuration $apiConfig,
+        \Webbhuset\SveaWebpay\Helper\Order $orderHelper
     ) {
         $this->rowBuilder = $rowBuilder;
         $this->apiConfig = $apiConfig;
         $this->discountBuilder = $discountBuilder;
         $this->customerBuilder = $customerBuilder;
         $this->shippingFeeBuilder = $shippingFeeBuilder;
+        $this->orderHelper = $orderHelper;
     }
 
     public function build(\Magento\Sales\Model\Order\Payment $payment)
@@ -111,9 +117,12 @@ class AbstractNewOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\O
      */
     protected function addAdjustment($sveaOrder, $amount)
     {
+        $translatedName = $this->orderHelper
+            ->getTranslatedRowName(\Webbhuset\SveaWebpay\Helper\Order::TRANSLATE_ADJUSTMENT);
+
         $sveaOrder->addDiscount( WebPayItem::fixedDiscount()
             ->setAmountIncVat(round($amount, 4))    // a negative discount shows up as a positive adjustment
-            ->setDescription('Adjustment')
+            ->setDescription($translatedName)
             ->setVatPercent(0)
         );
     }

@@ -14,13 +14,16 @@ use Magento\Payment\Gateway\Response\HandlerInterface;
 
 class ResponseHandler implements HandlerInterface
 {
+    protected $orderHelper;
+
     /**
      * Constructor
      *
      * @param \Webbhuset\SveaWebpay\Helper\Order $orderHelper
      */
-    public function __construct(\Webbhuset\SveaWebpay\Helper\Order $orderHelper)
-    {
+    public function __construct(
+        \Webbhuset\SveaWebpay\Helper\Order $orderHelper
+    ) {
         $this->orderHelper = $orderHelper;
     }
 
@@ -35,6 +38,11 @@ class ResponseHandler implements HandlerInterface
         $paymentDO = SubjectReader::readPayment($handlingSubject);
         $payment = $paymentDO->getPayment();
         $order = $payment->getOrder();
+
+        // Add translated keys so we can use them later
+        foreach ($this->orderHelper->getAllTranslatedRowNames() as $key => $tr) {
+            $payment->setAdditionalInformation($key, $tr);
+        }
 
         $order->setForcedShipmentWithInvoice(true);
         $order->setCanShipPartially(true);
