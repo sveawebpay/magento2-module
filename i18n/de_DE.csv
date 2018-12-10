@@ -71,3 +71,6 @@
 "The Invoice will be sent to the address registered to your social security number","Die Rechnung wird an die Meldeadresse geschickt."
 "The invoice and items will be sent to the address registered to your social security number","The invoice and items will be sent to the address registered to your social security number"
 "Order is already delivered in Svea. Syncing status.", "Order is already delivered in Svea. Syncing status."
+"svea_order_shipping_fee", "ShippingFee"
+"svea_order_payment_handling_fee", "Payment Handling Fee"
+"svea_order_adjustment", "Adjustment"
