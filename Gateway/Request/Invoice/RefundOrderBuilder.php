@@ -98,12 +98,13 @@ class RefundOrderBuilder implements \Webbhuset\SveaWebpay\Gateway\Request\OrderA
         // Credit whole shipping row and adjust amount if it differs
         $shippingAmount = $creditMemo->getShippingAmount();
         $shippingAdjustment = $shippingAmount;
-        if ($shippingAmount) {
-            foreach ($shippingRows as $row) {
+        foreach ($shippingRows as $row) {
+            if ($shippingAmount) {
                 $shippingAdjustment -= $row->amountExVat;
                 $sveaTotal += $row->amountExVat;
-                $rowsToCredit[] = $row->rowNumber;
             }
+
+            $rowsToCredit[] = $row->rowNumber;
         }
 
         foreach ($adjustmentRows as $row) {
