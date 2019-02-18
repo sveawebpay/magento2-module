@@ -1,4 +1,4 @@
-# SVEA Ekonomi Webpay Magneto 2 module
+# Svea Ekonomi Webpay Magento 2 module
 
 ## Dependencies
 
