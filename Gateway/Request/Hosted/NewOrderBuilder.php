@@ -105,7 +105,7 @@ class NewOrderBuilder extends AbstractNewOrderBuilder
 
         $requestTotals = $request->calculateRequestValues();
         $grandTotal = $order->getGrandTotal();
-        $requestTotal = $requestTotals['amount'] / 100;
+        $requestGrandTotal = $requestTotals['amount'] / 100;
 
         $adjustmentAmount = floatval(number_format(($requestGrandTotal - $grandTotal), 4));
         if (abs($adjustmentAmount) > 0) {
