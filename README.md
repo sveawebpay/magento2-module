@@ -6,9 +6,7 @@ This module uses Svea Ekonomi's integration packages
 The integration packages requires php extensions for SOAP and cURL.
 
 ## Installation
-Make sure your minimum stability in your
-composer.json is set to "dev".
-
+To install, go to your Magento root folder and run
 
 ```composer require sveaekonomi/magento2-module```
 
