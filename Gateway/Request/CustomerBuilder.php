@@ -66,6 +66,7 @@ class CustomerBuilder
             ->setZipCode($address->getPostcode())           // String    // invoice: required in NL and DE
             ->setLocality($address->getCity())         // String // invoice: required in NL and DE
             ->setPhoneNumber($address->getTelephone())      // String // invoice: optional but desirable
+            ->setEmail($address->getEmail())         // String   // invoice, payment plan: optional but desirable
             ->setAddressSelector($address->getData('addressSelector'))  // String // invoice: optional but recommended; received from WebPay::getAddresses() request response
             ->setPublicKey($address->getData('publicKey'))        // String       // invoice, payment plan: opt
             ->setNationalIdNumber($nationalIdNumber);
